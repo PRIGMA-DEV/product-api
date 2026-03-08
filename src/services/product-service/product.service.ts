@@ -1,9 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Product_entity } from 'src/entities/product_entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ProductService {
-  getAllProducts(): string {
-    return 'Start building your api here . . . .';
+
+  constructor(
+    @InjectRepository(Product_entity)
+    private productEntityRepository: Repository<Product_entity>,
+  ) {}
+
+
+  getAllProducts(): Promise<Product_entity[]> {
+    return this.productEntityRepository.find();
   }
 
   createProduct(): void {
