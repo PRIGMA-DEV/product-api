@@ -1,5 +1,4 @@
-
-import { Entity, Column, PrimaryGeneratedColumn, IntegerType } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Product_entity {
@@ -13,5 +12,5 @@ export class Product_entity {
   description: string;
 
   @Column({ default: true })
-  price: IntegerType;
+  price: number;
 }

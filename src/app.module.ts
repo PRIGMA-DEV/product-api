@@ -11,12 +11,13 @@ import { Product_entity } from './entities/product_entity';
       type: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'root',
-      password: 'Hamid Azrine',
-      database: 'store_database',
+      username: 'root', // Replace this by your user
+      password: 'root', // Replace this by your password
+      database: 'STORE_DATABASE', // Replace by your database name
       entities: [Product_entity],
       synchronize: true,
     }),
+    TypeOrmModule.forFeature([Product_entity]),
   ],
   controllers: [ProductController],
   providers: [ProductService],

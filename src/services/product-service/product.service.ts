@@ -5,12 +5,10 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class ProductService {
-
   constructor(
     @InjectRepository(Product_entity)
     private productEntityRepository: Repository<Product_entity>,
   ) {}
-
 
   getAllProducts(): Promise<Product_entity[]> {
     return this.productEntityRepository.find();
