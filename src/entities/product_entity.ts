@@ -1,16 +1,16 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Product_entity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn({ type: 'varchar', length: 36 })
   uuid: string;
 
-  @Column()
+  @Column({ type: 'int', default: 0 })
+  price: number;
+
+  @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   description: string;
-
-  @Column({ default: true })
-  price: number;
 }
