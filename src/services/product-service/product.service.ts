@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product_entity } from 'src/entities/product_entity';
 import { Repository } from 'typeorm';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class ProductService {
@@ -14,8 +15,19 @@ export class ProductService {
     return this.productEntityRepository.find();
   }
 
-  createProduct(): void {
-    console.log(' enter method to create a product . . .');
+  /**
+   * Create a new product entity
+   *
+   * @param productDto
+   */
+  createProduct(productDto: ProductEntityDto): Promise<Product_entity> {
+    const productEntity: Product_entity = {
+      uuid: randomUUID(),
+      name: productDto.name,
+      description: productDto.description,
+      price: productDto.price,
+    };
+    return this.productEntityRepository.save(productEntity);
   }
 
   updateProduct(): void {
