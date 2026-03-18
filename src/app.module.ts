@@ -15,7 +15,7 @@ import { Product_entity } from './entities/product_entity';
       password: 'root', // Replace this by your password
       database: 'STORE_DATABASE', // Replace by your database name
       entities: [Product_entity],
-      synchronize: true,
+      synchronize: false,
     }),
     TypeOrmModule.forFeature([Product_entity]),
   ],

@@ -34,7 +34,13 @@ export class ProductService {
     console.log(' enter method to update a product . . .');
   }
 
-  deleteProduct(): void {
-    console.log(' enter method to delete a product . . .');
+  deleteProduct(uuid: string): Promise<Product_entity> {
+    const productDelete: Product_entity = { uuid } as Product_entity;
+    return this.productEntityRepository.remove(productDelete);
   }
+
+  findProduct(uuid:string): Promise<Product_entity> {
+    return this.productEntityRepository.findOne({where: {uuid}});;
+  }
+
 }
