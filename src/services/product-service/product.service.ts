@@ -37,4 +37,15 @@ export class ProductService {
   deleteProduct(): void {
     console.log(' enter method to delete a product . . .');
   }
+
+findProductByCriteria(productSearchDto: ProductSearchDto):  Promise<Product_entity[]> {
+  console.log('this is from the service: ', productSearchDto);
+ return this.productEntityRepository.query(
+  `SELECT *
+   FROM product_entity
+   WHERE name LIKE ?`,
+  [`%${productSearchDto.criteria}%`]
+);
+}
+
 }

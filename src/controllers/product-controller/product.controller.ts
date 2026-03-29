@@ -16,4 +16,14 @@ export class ProductController {
     @Body() productEntityDto: ProductEntityDto): Promise<Product_entity> {
     return this.productService.createProduct(productEntityDto);
   }
+   
+  
+  @Post('/search')
+  serachByCriteria(
+    @Body() productSearchDto: ProductSearchDto): Promise<Product_entity[]> {
+    console.log('this is from the controller: ', productSearchDto);
+    return this.productService.findProductByCriteria(productSearchDto);
+   
+  }
 }
+
