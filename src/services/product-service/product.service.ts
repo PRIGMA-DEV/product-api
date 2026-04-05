@@ -33,4 +33,15 @@ export class ProductService {
   findProductByUuid(uuid: string): Promise<Product_entity> {
     return this.productEntityRepository.findOne({ where: { uuid } });
   }
+
+findProductByCriteria(productSearchDto: ProductSearchDto):  Promise<Product_entity[]> {
+  console.log('this is from the service: ', productSearchDto);
+ return this.productEntityRepository.query(
+  `SELECT *
+   FROM product_entity
+   WHERE name LIKE ?`,
+  [`%${productSearchDto.criteria}%`]
+);
+}
+
 }

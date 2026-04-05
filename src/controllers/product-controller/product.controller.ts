@@ -19,9 +19,19 @@ export class ProductController {
     return this.productService.createProduct(productEntityDto);
   }
 
+   
+  @Post('/search')
+  serachByCriteria(
+    @Body() productSearchDto: ProductSearchDto): Promise<Product_entity[]> {
+    console.log('this is from the controller: ', productSearchDto);
+    return this.productService.findProductByCriteria(productSearchDto);
+  }  
+
+
   @Get(':uuid')
   findProductByUuid(@Param('uuid') uuid: string): Promise<Product_entity> {
     console.log(uuid);
     return this.productService.findProductByUuid(uuid);
   }
 }
+

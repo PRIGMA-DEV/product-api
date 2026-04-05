@@ -1,0 +1,3 @@
+interface ProductSearchDto {
+  criteria: string;
+}
