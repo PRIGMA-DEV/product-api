@@ -1,5 +1,3 @@
 interface ProductSearchDto {
   criteria: string;
-  
-  
 }
