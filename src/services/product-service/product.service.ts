@@ -30,12 +30,8 @@ export class ProductService {
     return this.productEntityRepository.save(productEntity);
   }
 
-  updateProduct(): void {
-    console.log(' enter method to update a product . . .');
-  }
-
-  deleteProduct(): void {
-    console.log(' enter method to delete a product . . .');
+  findProductByUuid(uuid: string): Promise<Product_entity> {
+    return this.productEntityRepository.findOne({ where: { uuid } });
   }
 
 findProductByCriteria(productSearchDto: ProductSearchDto):  Promise<Product_entity[]> {
