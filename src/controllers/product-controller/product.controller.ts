@@ -22,8 +22,7 @@ export class ProductController {
   serachByCriteria(
     @Body() productSearchDto: ProductSearchDto): Promise<Product_entity[]> {
     console.log('this is from the controller: ', productSearchDto);
-    return null;
-   
-  }
+    return this.productService.findProductByCriteria(productSearchDto);
+  }  
 }
 
