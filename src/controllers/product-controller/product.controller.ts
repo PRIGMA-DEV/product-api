@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ProductService } from '../../services/product-service/product.service';
 import { Product_entity } from 'src/entities/product_entity';
 
@@ -32,6 +32,11 @@ export class ProductController {
   findProductByUuid(@Param('uuid') uuid: string): Promise<Product_entity> {
     console.log(uuid);
     return this.productService.findProductByUuid(uuid);
+  }
+
+  @Delete(':uuid')
+  deleteByUuid(uuid: string): void {
+    this.productService.deleteProductByUuid(uuid);
   }
 }
 
