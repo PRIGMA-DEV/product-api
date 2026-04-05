@@ -19,8 +19,8 @@ export class ProductController {
   }
 
   @Get(':uuid')
-  findProdutEntity(@Param('uuid') uuid: string): Promise<Product_entity> {
+  findProdutByUuid(@Param('uuid') uuid: string): Promise<Product_entity> {
     console.log(uuid);
-    return this.productService.findProduct(uuid);
+    return this.productService.findProductByUuid(uuid);
   }
 }
