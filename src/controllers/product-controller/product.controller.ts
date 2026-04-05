@@ -33,5 +33,10 @@ export class ProductController {
     console.log(uuid);
     return this.productService.findProductByUuid(uuid);
   }
+
+  @Delete(':uuid')
+  deleteByUuid(uuid: string): void{
+    
+  }
 }
 

@@ -44,4 +44,7 @@ findProductByCriteria(productSearchDto: ProductSearchDto):  Promise<Product_enti
 );
 }
 
+deleteProductByUuid(uuid: string): void{
+  this.productEntityRepository.delete({ uuid: uuid })
+}
 }
