@@ -12,8 +12,8 @@ import { Product_entity } from './entities/product_entity';
       host: 'localhost',
       port: 3306,
       username: 'root', // Replace this by your user
-      password: 'Hamid Azrine', // Replace this by your password
-      database: 'store_database', // Replace by your database name
+      password: 'root', // Replace this by your password
+      database: 'STORE_DATABASE', // Replace by your database name
       entities: [Product_entity],
       synchronize: true,
     }),
