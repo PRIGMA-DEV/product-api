@@ -30,13 +30,7 @@ export class ProductService {
     return this.productEntityRepository.save(productEntity);
   }
 
-   deleteProduct(uuid: string): Promise<Product_entity> {
-    const productDelete: Product_entity = { uuid } as Product_entity;
-    return this.productEntityRepository.remove(productDelete);
+  findProductByUuid(uuid: string): Promise<Product_entity> {
+    return this.productEntityRepository.findOne({ where: { uuid } });
   }
-
-  findProduct(uuid:string): Promise<Product_entity> {
-    return this.productEntityRepository.findOne({where: {uuid}});
-  }
-
 }
