@@ -35,7 +35,8 @@ export class ProductController {
   }
 
   @Delete(':uuid')
-  deleteByUuid(uuid: string): void {
+  deleteByUuid(@Param('uuid') uuid: string): void {
+    console.log('Enter delete product by uuid in the controller: ', uuid);
     this.productService.deleteProductByUuid(uuid);
   }
 }
