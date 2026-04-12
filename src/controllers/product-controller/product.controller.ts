@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ProductService } from '../../services/product-service/product.service';
 import { Product_entity } from 'src/entities/product_entity';
 
@@ -19,19 +19,22 @@ export class ProductController {
     return this.productService.createProduct(productEntityDto);
   }
 
-   
   @Post('/search')
-  serachByCriteria(
+  searchByCriteria(
     @Body() productSearchDto: ProductSearchDto): Promise<Product_entity[]> {
     console.log('this is from the controller: ', productSearchDto);
     return this.productService.findProductByCriteria(productSearchDto);
-  }  
-
+  }
 
   @Get(':uuid')
   findProductByUuid(@Param('uuid') uuid: string): Promise<Product_entity> {
     console.log(uuid);
     return this.productService.findProductByUuid(uuid);
   }
-}
 
+  @Delete(':uuid')
+  deleteByUuid(@Param('uuid') uuid: string): void {
+    console.log('Enter delete product by uuid in the controller: ', uuid);
+    this.productService.deleteProductByUuid(uuid);
+  }
+}
